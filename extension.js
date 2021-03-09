@@ -1,5 +1,7 @@
 /*
-    This file is part of matlab - formatter - vscode
+    This file is part of octave - formatter - vscode.
+
+    Based on matlab - formatter - vscode
     Copyright(C) 2019 - 2021 Benjamin "Mogli" Mann
 
     This program is free software: you can redistribute it and / or modify
@@ -24,17 +26,17 @@ const stream = require('stream');
 const os = require("os");
 var channel = null;
 const fullRange = doc => doc.validateRange(new vscode.Range(0, 0, Number.MAX_VALUE, Number.MAX_VALUE));
-const MODE = { language: 'matlab' };
+const MODE = { language: 'octave' };
 
-class MatlabFormatter {
+class OctaveFormatter {
     constructor() {
         this.machine_os = os.platform();
         console.log(this.machine_os);
-        this.py = vscode.workspace.getConfiguration('matlab-formatter')['pythonPath'];
+        this.py = vscode.workspace.getConfiguration('octave-formatter')['pythonPath'];
         if (this.py == '' && this.machine_os == 'win32') {
             this.py = 'python ';
         }
-        this.formatter = vscode.workspace.getConfiguration('matlab-formatter')['formatterPath'];
+        this.formatter = vscode.workspace.getConfiguration('octave-formatter')['formatterPath'];
         if (this.formatter == '') {
             this.formatter = '"'+ __dirname + '/formatter/matlab_formatter.py"';
         }
@@ -52,8 +54,8 @@ class MatlabFormatter {
     format(document, range) {
         return new Promise((resolve, reject) => {
             // let formatter = this.py +'"'+ __dirname + '/formatter/matlab_formatter.py"';
-            let indentwidth = " --indentWidth=" + vscode.workspace.getConfiguration('matlab-formatter')['indentwidth'];
-            let separateBlocks = " --separateBlocks=" + vscode.workspace.getConfiguration('matlab-formatter')['separateBlocks'];
+            let indentwidth = " --indentWidth=" + vscode.workspace.getConfiguration('octave-formatter')['indentwidth'];
+            let separateBlocks = " --separateBlocks=" + vscode.workspace.getConfiguration('octave-formatter')['separateBlocks'];
             let filename = ' -';
             let start = " --startLine=" + (range.start.line + 1);
             let end = " --endLine=" + (range.end.line + 1);
@@ -77,11 +79,11 @@ class MatlabFormatter {
     }
 }
 
-exports.MatlabFormatter = MatlabFormatter;
+exports.OctaveFormatter = OctaveFormatter;
 
-class MatlabDocumentRangeFormatter {
+class OctaveDocumentRangeFormatter {
     constructor() {
-        this.formatter = new MatlabFormatter();
+        this.formatter = new OctaveFormatter();
     }
     provideDocumentFormattingEdits(document, options, token) {
         return this.formatter.formatDocument(document, fullRange(document));
@@ -92,8 +94,8 @@ class MatlabDocumentRangeFormatter {
 }
 
 function activate(context) {
-    channel = vscode.window.createOutputChannel('matlab-formatter');
-    const formatter = new MatlabDocumentRangeFormatter();
+    channel = vscode.window.createOutputChannel('octave-formatter');
+    const formatter = new OctaveDocumentRangeFormatter();
     context.subscriptions.push(vscode.languages.registerDocumentFormattingEditProvider(MODE, formatter));
     context.subscriptions.push(vscode.languages.registerDocumentRangeFormattingEditProvider(MODE, formatter));
 }

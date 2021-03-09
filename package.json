@@ -1,59 +1,60 @@
 {
-    "name": "matlab-formatter",
-    "displayName": "matlab-formatter",
-    "description": "format matlab code",
+    "name": "octave-formatter",
+    "displayName": "Octave Formatter",
+    "description": "Format Octave code",
     "version": "2.8.6",
-    "publisher": "AffenWiesel",
+    "publisher": "tusindfryd",
     "engines": {
         "vscode": "^1.20.0"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/affenwiesel/matlab-formatter-vscode"
+        "url": "https://github.com/tusindfryd/octave-formatter-vscode"
     },
     "categories": [
-        "Other"
+        "Formatters"
     ],
     "keywords": [
-        "matlab"
+        "octave"
     ],
     "activationEvents": [
-        "onLanguage:matlab"
+        "onLanguage:octave"
     ],
     "main": "./extension",
     "icon": "images/icon.png",
     "contributes": {
         "configuration": {
-            "title": "Matlab-formatter configuration",
+            "title": "Octave Formatter configuration",
             "type": "object",
             "properties": {
-                "matlab-formatter.indentwidth": {
+                "octave-formatter.indentwidth": {
                     "type": "integer",
                     "default": 4,
                     "description": "number of spaces used for indentation"
                 },
-                "matlab-formatter.separateBlocks": {
+                "octave-formatter.separateBlocks": {
                     "type": "boolean",
                     "default": true,
                     "description": "add newlines before and after blocks (for, if, etc.)"
                 },
-                "matlab-formatter.pythonPath": {
+                "octave-formatter.pythonPath": {
                     "type": "string",
                     "default": "",
                     "description": "optional custom path to python executable (requires restarting vscode)"
                 },
-                "matlab-formatter.formatterPath": {
+                "octave-formatter.formatterPath": {
                     "type": "string",
                     "default": "",
-                    "description": "optional custom path to matlab formatter (requires restarting vscode)"
+                    "description": "optional custom path to octave formatter (requires restarting vscode)"
                 }
             }
         },
         "languages": [
             {
-                "id": "matlab",
+                "id": "octave",
                 "aliases": [
-                    "MATLAB"
+                    "Octave",
+                    "OCTAVE"
                 ]
             }
         ],
@@ -72,10 +73,5 @@
         "eslint": "^4.11.0",
         "@types/node": "^7.0.43",
         "@types/mocha": "^2.2.42"
-    },
-    "__metadata": {
-        "id": "16f49f82-0071-4930-b6b5-b3e3ccd5fb0d",
-        "publisherDisplayName": "AffenWiesel",
-        "publisherId": "c3404b57-de97-47d7-8f81-b4955a94cc2e"
     }
 }
