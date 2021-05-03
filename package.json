@@ -2,7 +2,7 @@
     "name": "octave-formatter",
     "displayName": "Octave Formatter",
     "description": "Format Octave code",
-    "version": "2.8.6",
+    "version": "2.8.7",
     "publisher": "tusindfryd",
     "engines": {
         "vscode": "^1.20.0"
