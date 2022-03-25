@@ -25,11 +25,12 @@ import sys
 class Formatter:
     # control sequences
     ctrl_1line = re.compile(r'(^|\s*)(if|while|for|try)(\W\S.*\W)(end|endif|endwhile|endfor)(\s*$)')
-    ctrlstart = re.compile(r'(^|\s*)(function|if|while|for|parfor|try|classdef|methods|properties|events|arguments|enumeration)\s*(\W\S.*|\s*$)')
+    ctrl_1line_dountil = re.compile(r'(^|\s*)(do)(\W\S.*\W)(until)\s*(\W\S.*|\s*$)')
+    ctrlstart = re.compile(r'(^|\s*)(function|if|while|for|parfor|try|classdef|methods|properties|events|arguments|enumeration|do)\s*(\W\S.*|\s*$)')
     ctrl_ignore = re.compile(r'(^|\s*)(import|clear|clearvars)(.*$)')
     ctrlstart_2 = re.compile(r'(^|\s*)(switch)\s*(\W\S.*|\s*$)')
     ctrlcont = re.compile(r'(^|\s*)(elseif|else|case|otherwise|catch)\s*(\W\S.*|\s*$)')
-    ctrlend = re.compile(r'(^|\s*)(end|endfunction|endif|endwhile|endfor|endswitch)(\s+\S.*|\s*$)')
+    ctrlend = re.compile(r'(^|\s*)(end|endfunction|endif|endwhile|endfor|endswitch|until)(\s+\S.*|\s*$)')
     linecomment = re.compile(r'(^|\s*)%.*$')
     ellipsis = re.compile(r'.*\.\.\.\s*$')
 
@@ -272,6 +273,10 @@ class Formatter:
         m = re.match(self.ctrl_1line, line)
         if m:
             return (0, self.indent() + m.group(2) + ' ' + self.format(m.group(3)).strip() + ' ' + m.group(4))
+
+        m = re.match(self.ctrl_1line_dountil, line)
+        if m:
+            return (0, self.indent() + m.group(2) + ' ' + self.format(m.group(3)).strip() + ' ' + m.group(4) + ' ' + m.group(5))
 
         m = re.match(self.ctrlstart, line)
         if m:
