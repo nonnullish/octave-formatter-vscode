@@ -1,45 +1,49 @@
+# do not modify hash sign comments
+% do not modify percent sign comments
+
+# do not modify shebang
+#!/usr/bin/env -S octave -qf
+
+# add correct indentation
+x = linspace(-4, 4, 80);
 import util.*
-% ADD CORRECT INDENTATION
-function foo = myFun(a, b, c)
-    % ADD SPACES BETWEEN EXPRESSIONS
 
-    if a == '{' || a == '['
-        N = norm(a .* b - c)
-        % REMOVE ADDITIONAL SPACES
-        foo = -N * a(3) / N
-        % TREAT POWERS AND RATIONAL NUMBERS AND NEGATIVES AS SINGLE EXPRESSION ιω ϱϱκφ
-        p = foo^N - 17
-        r = 42/0.8e15
-        d = 4.7e11
-        neg = -r
-    end
+# allow combined operators
+y += 1
+y -= 1
+y /= 1
+y *= 1
 
-    try something; catch e; end
+# treat powers, rational numbers, and negative numbers as single expressions
+x = a^y
+y = 1/0.1e15
+z = -2e-10
 
-    for k = 1:N
-        % ADD INDENTATION AFTER LINE BREAK
-        k++
+# indent catching errors
+try something; catch e; end
 
-        t = a * k ...
-            + b .* k^2 ... % comment
-            + c * k^3
-        vectorofstrings = ['α' 'β' 'γ'];
-        vectorofstrings = ['α', 'β', 'γ'];
-        vectorofstuff = ['foo' -dead('beef', 3.14, bar) -foo('bar', '42')]
+# indent matrices split over multiple lines
+# remove additional new lines
+M = [1 -2 3;
+4 5 -6;
+- 7 8 9]
 
-        if (norm(t))% ADD NEWLINE BEFORE AND AFTER BLOCK
-            fprintf('Hello world \n');
-        end
 
-    end
+C = {1
+[2 3]'
+{1 M 'three'}};
 
-    % INDENT MATRICES SPLIT OVER MULTIPLE LINES
-    M = [1 -2 3;
-        4 5 -6;
-        - 7 8 9]% REMOVE ADDITIONAL NEWLINES
-
-    C = {1
-        [2 3]'
-        {1 M 'three'}};
-
-end
+# add spaces between expressions
+function hanoimove(ndisks,from,to,via)
+    # make indentation 4 spaces wide
+    # remove additional spaces
+  if ( ndisks == 1 ) 
+    printf("Move disk from pole %d to pole %d\n", from, to);
+  else
+    hanoimove(ndisks-1, from, via, to);
+    hanoimove(1, from, to, via);
+    hanoimove(ndisks-1, via, to, from);
+  endif
+endfunction
+ 
+hanoimove(4, 1, 2, 3);
