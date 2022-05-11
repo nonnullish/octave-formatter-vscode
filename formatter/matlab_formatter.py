@@ -31,13 +31,13 @@ class Formatter:
     ctrlstart_2 = re.compile(r'(^|\s*)(switch)\s*(\W\S.*|\s*$)')
     ctrlcont = re.compile(r'(^|\s*)(elseif|else|case|otherwise|catch)\s*(\W\S.*|\s*$)')
     ctrlend = re.compile(r'(^|\s*)(end|endfunction|endif|endwhile|endfor|endswitch|until)(\s+\S.*|\s*$)')
-    linecomment = re.compile(r'(^|\s*)%.*$')
+    linecomment = re.compile(r'(^|\s*)[%#].*$')
     ellipsis = re.compile(r'.*\.\.\.\s*$')
 
     # patterns
     p_string = re.compile(r'(^|.*[\(\[\{,;=\+\-\s])\s*(\'([^\']|\'\')+\')([\)\}\]\+\-,;].*|\s+.*|$)')
     p_string_dq= re.compile(r'(^|.*[\(\[\{,;=\+\-\s])\s*(\"[^\"]*\")([\)\}\]\+\-,;].*|\s+.*|$)')
-    p_comment = re.compile(r'(^|.*\S)\s*(%.*)')
+    p_comment = re.compile(r'(^|.*\S)\s*([%#].*)')
     p_blank = re.compile(r'^\s+$')
     p_num_sc = re.compile(r'(^|.*\W)\s*(\d+\.?\d*)([eE][+-]?)(\d+)(.*)')
     p_num_R = re.compile(r'(^|.*\W)\s*(\d+)\s*(\/)\s*(\d+)(.*)')
