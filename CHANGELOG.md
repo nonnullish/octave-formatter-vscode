@@ -1,5 +1,9 @@
 # Change Log
 
+### 2.9.0
+bugfixes:
+* fix redundant indent of 'end_try_catch'
+
 ### 2.8.6
 add support for inline try;catch;end block
 

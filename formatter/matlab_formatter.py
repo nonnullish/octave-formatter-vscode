@@ -3,6 +3,7 @@
 '''
     This file is part of matlab-formatter-vscode
     Copyright(C) 2019-2021 Benjamin "Mogli" Mann
+    Copyright(C) 2022 Linuxbckp
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -24,7 +25,7 @@ import sys
 
 class Formatter:
     # control sequences
-    ctrl_1line = re.compile(r'(^|\s*)(if|while|for|try)(\W\S.*\W)(end|endif|endwhile|endfor)(\s*$)')
+    ctrl_1line = re.compile(r'(^|\s*)(if|while|for|try)(\W\S.*\W)(end|endif|endwhile|endfor|end_try_catch)(\s*$)')
     ctrl_1line_dountil = re.compile(r'(^|\s*)(do)(\W\S.*\W)(until)\s*(\W\S.*|\s*$)')
     ctrlstart = re.compile(r'(^|\s*)(function|if|while|for|parfor|try|classdef|methods|properties|events|arguments|enumeration|do)\s*(\W\S.*|\s*$)')
     ctrl_ignore = re.compile(r'(^|\s*)(import|clear|clearvars)(.*$)')
