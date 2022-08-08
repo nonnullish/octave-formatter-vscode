@@ -31,7 +31,7 @@ class Formatter:
     ctrl_ignore = re.compile(r'(^|\s*)(import|clear|clearvars)(.*$)')
     ctrlstart_2 = re.compile(r'(^|\s*)(switch)\s*(\W\S.*|\s*$)')
     ctrlcont = re.compile(r'(^|\s*)(elseif|else|case|otherwise|catch)\s*(\W\S.*|\s*$)')
-    ctrlend = re.compile(r'(^|\s*)(end|endfunction|endif|endwhile|endfor|endswitch|until)(\s+\S.*|\s*$)')
+    ctrlend = re.compile(r'(^|\s*)(end|endfunction|endif|endwhile|endfor|endswitch|until|endclassdef|endmethods|endproperties)(\s+\S.*|\s*$)')
     linecomment = re.compile(r'(^|\s*)[%#].*$')
     ellipsis = re.compile(r'.*\.\.\.\s*$')
 
