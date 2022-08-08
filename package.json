@@ -2,7 +2,7 @@
     "name": "octave-formatter",
     "displayName": "Octave Formatter",
     "description": "Format Octave code",
-    "version": "2.9.0",
+    "version": "2.9.1",
     "publisher": "tusindfryd",
     "engines": {
         "vscode": "^1.20.0"
@@ -49,15 +49,13 @@
                 }
             }
         },
-        "languages": [
-            {
-                "id": "octave",
-                "aliases": [
-                    "Octave",
-                    "OCTAVE"
-                ]
-            }
-        ],
+        "languages": [{
+            "id": "octave",
+            "aliases": [
+                "Octave",
+                "OCTAVE"
+            ]
+        }],
         "capabilities": {
             "documentFormattingProvider": "true",
             "documentRangeFormattingProvider": "true"
